@@ -1,11 +1,26 @@
 .App {
   text-align: center;
 }
+
+.main {
+  display: flex;
+  justify-content: center; /* Aligns items horizontally in the center */
+  height:100vh;
+}
+
+.leftPane,
+.rightPane {
+  flex: 1; /* Equal width for both panes */
+  margin: 0 10px; /* Adjust spacing between panes */
+}
+
 .leftPane {
-  float: left;
-  text-align: center;
+  background-color: lightblue;
 }
 .rightPane {
-  float: right;
-  text-align: center;
+  background-color: lightgreen;
+
+}
+.button {
+  background-color: red;
 }
