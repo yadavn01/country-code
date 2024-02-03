@@ -6,7 +6,7 @@ import CountryCapital from './components/CountryCapital';
 
 function App() {
 
-  const [buttonColor , setButtonColor] = useState('red');
+  // const [buttonColor , setButtonColor] = useState('red');
 
   const countryData = {
     "USA" : "Washington DC",
@@ -14,18 +14,22 @@ function App() {
     "Nepal" : "Kathmandu",
     "France": "Paris",
   };
+  const countryNames = Object.keys(countryData);
 
-  var changeColor = () => {
-    const newColor = buttonColor === 'red' ? 'blue' : 'red';
-    setButtonColor(newColor);
-  }
+  const handleButtonClick = (country) => {
+    // Handle button click here
+    console.log(`${country}'s capital is ${countryData[country]}`);
+  };
+
+  // var changeColor = () => {
+  //   const newColor = buttonColor === 'red' ? 'blue' : 'red';
+  //   setButtonColor(newColor);
+  // }
 
   return (
    <div className="main">
     <div className="leftPane">
-       <Button className="button" style={{ backgroundColor: buttonColor }} onClick={changeColor}>
-       <CountryCapital data={countryData} />
-       </Button>
+        <CountryCapital countryNames={countryNames} onButtonClick={handleButtonClick}/>
     </div>
     <div className="rightPane">
       

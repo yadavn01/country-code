@@ -1,7 +1,7 @@
-const Button = ({ onClick, style }) => {
+const Button = ({ onClick, style, children }) => {
     return (
       <button type="button" onClick={onClick} style={style}>
-        New zealand
+       {children}
       </button>
     );
   };

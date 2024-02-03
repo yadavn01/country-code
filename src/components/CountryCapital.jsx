@@ -1,12 +1,16 @@
-const CountryCapital = ({ data }) => {
+import Button from './components/Button';
+
+
+const CountryCapital = ({ countryNames, onButtonClick }) => {
+
     return (
-        <ul>
-        {Object.entries(data).map((country, capital) => (
-            <li key={country}>
-                {country} : {capital}
-            </li>
+        <>
+        {countryNames.map((country) => (
+              <Button key={country} style={{ margin: '5px' }} onClick={() => onButtonClick(country)}>
+                {country}
+              </Button>
         ))}
-        </ul>
+        </>
     );
   };
 
