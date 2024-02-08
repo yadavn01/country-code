@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+// let buttonState = "DEFAULT" | "SELECTED" | "WRONG";
+// const blueColor = "blue";
 const CountryCapital = () => {
     const [active, setActive] = useState('');
     const [colour, setColour] = useState({});
@@ -16,26 +18,24 @@ const CountryCapital = () => {
       options.sort(() => Math.random() - 0.5);
 
 
-    //   const handleButtonClick = () => {
-    //     // Handle button click here
-    //     setColour({
-    //         ...options,
-    //         [option] : 'blue',
-    //     })
-    //     setActive(!active);
-    //   };
+      const handleButtonClick = (option) => {
+        // Handle button click here
+        setColour(prevState => ({
+            ...prevState,
+            [option] : "SELECTED",
+        }))};
 
     return (
         <>
 <div className="main">
     <div className="leftPane">
         {options.map((option) => (
-         <button style={{ margin: '5px', colour}} onClick={()=> { 
-            setColour ({
-                ...options,
-                [option] : 'blue',
-            })
-         }}>
+         <button  style={{
+            margin: '5px',
+            backgroundColor: colour[option] === "SELECTED" ? 'blue' :
+                             colour[option] === "CORRECT" ? 'green' :
+                             colour[option] === "INCORRECT" ? 'red' : 'initial'
+          }} onClick={handleButtonClick(option)}>
                 {option}
               </button>
         ))}
