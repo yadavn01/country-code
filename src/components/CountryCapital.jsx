@@ -1,6 +1,8 @@
-// import Button from './components/Button';
+import { useState } from 'react';
 
 const CountryCapital = () => {
+    const [active, setActive] = useState('');
+    const [colour, setColour] = useState({});
 
     const countryData = {
         "USA" : "Washington DC",
@@ -11,35 +13,47 @@ const CountryCapital = () => {
       const countryNames = Object.keys(countryData);
       const countryCapitals = Object.values(countryData);
       const options = [...countryNames, ...countryCapitals];
-    
-      const handleButtonClick = (country) => {
-        // Handle button click here
-        console.log(`${countryNames}'s capital is ${countryCapitals}`);
-      };
+      options.sort(() => Math.random() - 0.5);
+
+
+    //   const handleButtonClick = () => {
+    //     // Handle button click here
+    //     setColour({
+    //         ...options,
+    //         [option] : 'blue',
+    //     })
+    //     setActive(!active);
+    //   };
 
     return (
         <>
-
 <div className="main">
     <div className="leftPane">
-        {countryNames.map((country) => (
-         <button key={country} style={{ margin: '5px' }} onClick={handleButtonClick}>
-                {country}
+        {options.map((option) => (
+         <button style={{ margin: '5px', colour}} onClick={()=> { 
+            setColour ({
+                ...options,
+                [option] : 'blue',
+            })
+         }}>
+                {option}
               </button>
         ))}
-        {/* <CountryCapital countryNames={countryNames} onButtonClick={handleButtonClick}/> */}
     </div>
     <div className="rightPane">
-    {countryCapitals.map((capitals) => (
-         <button key={capitals} style={{ margin: '5px' }} onClick={handleButtonClick}>
-                {capitals}
+    {options.map((option) => (
+         <button key={option} style={{ margin: '5px' }} onClick={()=> { 
+            setColour ({
+                ...options,
+                [option] : 'blue',
+            })
+         }}>
+                {option}
               </button>
         ))}
       
     </div>
    </div>
-   
-
         </>
     );
   };
