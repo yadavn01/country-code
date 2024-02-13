@@ -19,8 +19,13 @@
 }
 .rightPane {
   background-color: lightgreen;
-
 }
-.button {
-  background-color: red;
+.selected {
+background-color: blue;
+}
+.correct {
+background-color: green;
+}
+.incorrect {
+background-color: red;
 }
