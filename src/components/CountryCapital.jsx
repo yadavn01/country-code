@@ -12,8 +12,8 @@ const CountryCapital = () => {
       
       const countryNames = Object.keys(countryData);
       const countryCapitals = Object.values(countryData);
-      //const options = [...countryNames, ...countryCapitals];
-      const [options , setOptions] = useState([]);
+      const options = [...countryNames, ...countryCapitals];
+      //const [options , setOptions] = useState([]);
       useEffect(()=> {
           const initialOptions = [...countryNames, ...countryCapitals].map((value) => ({
             label: value,
@@ -43,8 +43,6 @@ const CountryCapital = () => {
 
     return (
         <>
-<div className="main">
-    <div className="leftPane">
         {options.map((option) => (
          <button 
          key={option.value}
@@ -54,10 +52,9 @@ const CountryCapital = () => {
           }} 
           onClick={()=> {handleButtonClick(option.value)}}>
                 {option.label}
+             
               </button>
         ))}
-    </div>
-   </div>
         </>
     );
   };
