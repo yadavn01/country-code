@@ -13,15 +13,16 @@ const CountryCapital = () => {
       const countryNames = Object.keys(countryData);
       const countryCapitals = Object.values(countryData);
       const options = [...countryNames, ...countryCapitals];
+      const [colorMap, setColorMap] = useState<Record<string,string>>({});
       //const [options , setOptions] = useState([]);
       useEffect(()=> {
-          const initialOptions = [...countryNames, ...countryCapitals].map((value) => ({
+          options.map((value) => ({
             label: value,
             value,
             state: 'DEFAULT',
           }))
-          initialOptions.sort(() => Math.random() - 0.5);
-          setOptions(initialOptions);
+          options.sort(() => Math.random() - 0.5);
+         // setOptions(initialOptions);
       },[]);
 
         const handleButtonClick = (option) => {
@@ -30,15 +31,15 @@ const CountryCapital = () => {
             // const isCorrect = countryNames.includes(option) && countryData[option] === countryCapitals[countryNames.indexOf(option)];
             const isCorrect = countryData[option] === countryNames[countryCapitals.indexOf(option)];
 
-            setOptions((prevOptions) => {
-              return prevOptions.map((prevOption) => {
+            // setOptions((prevOptions) => {
+            //   return prevOptions.map((prevOption) => {
             
-                if (prevOption.value === option) {
-                  return { ...prevOption, state: isCorrect ? 'correct' : 'incorrect' };
-                }
-                return prevOption;
-              });
-            });
+            //     if (prevOption.value === option) {
+            //       return { ...prevOption, state: isCorrect ? 'correct' : 'incorrect' };
+            //     }
+            //     return prevOption;
+            //   });
+            // });
           };
 
     return (
@@ -51,7 +52,7 @@ const CountryCapital = () => {
             margin: '5px',
           }} 
           onClick={()=> {handleButtonClick(option.value)}}>
-                {option.label}
+                {option}
              
               </button>
         ))}
