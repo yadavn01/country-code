@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 
-const CountryCapital = () => {
+const CountryCapital = ({ data }: {data: Record<string, string>}) => {
 
     const countryData = {
         "USA" : "Washington DC",
@@ -51,7 +51,13 @@ const CountryCapital = () => {
          style={{
             margin: '5px',
           }} 
-          onClick={()=> {handleButtonClick(option.value)}}>
+          onClick={()=> {
+            //setting color to blue
+            setColorMap ({
+              ....colorMap,
+              [option]: '09Bff'
+            })
+          }}>
                 {option}
              
               </button>
