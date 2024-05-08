@@ -1,4 +1,8 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
+
+type ButtonState = 'DEFAULT' | 'SELECTED' | 'WRONG';
+const blueColor = "009Bff";
 
 
 const CountryCapital = ({ data }: {data: Record<string, string>}) => {
@@ -10,8 +14,8 @@ const CountryCapital = ({ data }: {data: Record<string, string>}) => {
         "France": "Paris",
       };
       
-      const countryNames = Object.keys(countryData);
-      const countryCapitals = Object.values(countryData);
+      const countryNames = Object.keys(data);
+      const countryCapitals = Object.values(data);
       const options = [...countryNames, ...countryCapitals];
       const [colorMap, setColorMap] = useState<Record<string,string>>({});
       //const [options , setOptions] = useState([]);
@@ -25,38 +29,25 @@ const CountryCapital = ({ data }: {data: Record<string, string>}) => {
          // setOptions(initialOptions);
       },[]);
 
-        const handleButtonClick = (option) => {
-            // Handle button click here
-            // Determine if the clicked option is correct or incorrect
-            // const isCorrect = countryNames.includes(option) && countryData[option] === countryCapitals[countryNames.indexOf(option)];
-            const isCorrect = countryData[option] === countryNames[countryCapitals.indexOf(option)];
+        // const handleButtonClick = (option) => {
+        //     // Handle button click here
+        //     // Determine if the clicked option is correct or incorrect
+        //     // const isCorrect = countryNames.includes(option) && countryData[option] === countryCapitals[countryNames.indexOf(option)];
+        //     const isCorrect = countryData[option] === countryNames[countryCapitals.indexOf(option)];
 
-            // setOptions((prevOptions) => {
-            //   return prevOptions.map((prevOption) => {
-            
-            //     if (prevOption.value === option) {
-            //       return { ...prevOption, state: isCorrect ? 'correct' : 'incorrect' };
-            //     }
-            //     return prevOption;
-            //   });
-            // });
-          };
+        //   };
 
     return (
         <>
         {options.map((option) => (
-         <button 
-         key={option.value}
-         className={`button ${option.state === 'selected' ? 'selected' : ''}`}
-         style={{
-            margin: '5px',
-          }} 
+          <button
+         className= {colorMap[option] === 'SELECTED' ? 'selected' : ''}
           onClick={()=> {
             //setting color to blue
-            setColorMap ({
-              ....colorMap,
-              [option]: '09Bff'
-            })
+            setColorMap({
+              ...colorMap,
+              [option]: "SELECTED",
+            });
           }}>
                 {option}
              
