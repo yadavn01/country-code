@@ -1,13 +1,16 @@
-import Button from './components/Button';
 import './App.css';
-import { useState } from 'react';
 import CountryCapital from './components/CountryCapital';
 
 
 function App() {
 
   return (
-    <CountryCapital ></CountryCapital>
+    <CountryCapital data={{
+      "USA" : "Washington DC",
+      "New Zealand" : "Wellington",
+      "Nepal" : "Kathmandu",
+      "France": "Paris",
+    }}></CountryCapital>
   );
 }
 

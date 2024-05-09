@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+button {
+  background-color: #f9f9f9;
+}
+
 .selected {
-  color: 009Bff;
+  color: #009Bff;
 }

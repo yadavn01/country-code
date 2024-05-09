@@ -20,12 +20,4 @@
 .rightPane {
   background-color: lightgreen;
 }
-.selected {
-background-color: blue;
-}
-.correct {
-background-color: green;
-}
-.incorrect {
-background-color: red;
-}
+
