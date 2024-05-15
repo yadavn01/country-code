@@ -2,6 +2,10 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 
 type ButtonState = 'DEFAULT' | 'SELECTED' | 'WRONG';
+type Option = {
+  valueL: string;
+  stare: ButtonState;
+}
 
 
 const CountryCapital = ({ data }: {data: Record<string, string>}) => {
@@ -9,20 +13,23 @@ const CountryCapital = ({ data }: {data: Record<string, string>}) => {
 
       const countryNames = Object.keys(data);
       const countryCapitals = Object.values(data);
-      const options = [...countryNames, ...countryCapitals];
+      const options = ;
       const [colorMap, setColorMap] = useState<Record<string,string>>({});
-      //const [options , setOptions] = useState([]);
+      const [options , setOptions] = useState<Option[]>([...countryNames, ...countryCapitals].map(value => ({
+        value,
+        state: "DEFAULT",
+      }))
+    );
 
-      options.sort(() => Math.random() - 0.5);
-      // useEffect(()=> {
-      //     options.map((value) => ({
-      //       label: value,
-      //       value,
-      //       state: 'DEFAULT',
-      //     }))
-         
-      //    // setOptions(initialOptions);
-      // },[]);
+      useEffect(()=> {
+        options.map((value) => ({
+          label: value,
+          value,
+          state: 'DEFAULT',
+        }))
+        options.sort(() => Math.random() - 0.5);      
+         // setOptions(initialOptions);
+      },[]);
 
         // const handleButtonClick = (option) => {
         //     // Handle button click here
@@ -36,16 +43,15 @@ const CountryCapital = ({ data }: {data: Record<string, string>}) => {
         <>
         {options.map((option) => (
           <button
-         className= {colorMap[option] === 'SELECTED' ? 'selected' : ''}
+         className= {option.state === 'SELECTED' ? 'selected' : ''}
           onClick={()=> {
             //setting color to blue
             setColorMap({
-              ...colorMap,
-              [option]: "SELECTED",
+              ...options,
+              state: "SELECTED",
             });
           }}>
                 {option}
-             
               </button>
         ))}
         </>
