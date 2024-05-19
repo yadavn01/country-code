@@ -3,7 +3,6 @@ import CountryCapital from './components/CountryCapital';
 
 
 function App() {
-
   return (
     <CountryCapital data={{
       "USA" : "Washington DC",
