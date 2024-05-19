@@ -22,31 +22,18 @@ const CountryCapital = ({ data }: { data: Record<string, string> }) => {
     }))
   );
 
-  // useEffect(() => {
-  //   options.map((value) => ({
-  //     label: value,
-  //     value,
-  //     state: 'DEFAULT',
-  //   }))
-  //   
-  //   // setOptions(initialOptions);
-  // }, []);
-
-  // const handleButtonClick = (option) => {
-  //     // Handle button click here
-  //     // Determine if the clicked option is correct or incorrect
-  //     // const isCorrect = countryNames.includes(option) && countryData[option] === countryCapitals[countryNames.indexOf(option)];
-  //     const isCorrect = countryData[option] === countryNames[countryCapitals.indexOf(option)];
-
-  //   };
+  const [selected, setSelected] = useState<Option>();
 
   return (
     <>
       {options.map((option) => (
         <button
+        key={option.value}
           className={option.state === 'SELECTED' ? 'selected' : ''}
           onClick={() => {
-            //setting color to blue
+            if(!selected){
+              setSelected(selected)
+                 //setting color to blue
             setOptions(options.map(opt => {
               return opt === option ? 
                 {
@@ -56,6 +43,17 @@ const CountryCapital = ({ data }: { data: Record<string, string> }) => {
               }
             )
             );
+            }
+            else{
+              if(selected.value === data[option.value] || data[option.value] === selected.value) {
+                setOptions(options.filter(opt => {
+                  return !(opt.value === selected.value || opt.value === option.value)
+                }))
+              } else {
+                
+              }
+            }
+         
             }}>
   { option.value}
         </button >
