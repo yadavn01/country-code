@@ -32,7 +32,7 @@ const CountryCapital = ({ data }: { data: Record<string, string> }) => {
           className={option.state === 'SELECTED' ? 'selected' : ''}
           onClick={() => {
             if(!selected){
-              setSelected(selected)
+              setSelected(option)
                  //setting color to blue
             setOptions(options.map(opt => {
               return opt === option ? 
@@ -49,9 +49,7 @@ const CountryCapital = ({ data }: { data: Record<string, string> }) => {
                 setOptions(options.filter(opt => {
                   return !(opt.value === selected.value || opt.value === option.value)
                 }))
-              } else {
-                
-              }
+              } setSelected(undefined)
             }
          
             }}>
