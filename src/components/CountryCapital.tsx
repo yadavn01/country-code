@@ -23,23 +23,38 @@ const CountryCapital = ({ data }: { data: Record<string, string> }) => {
   );
 
   const [selected, setSelected] = useState<Option>();
+  const isGameOver = options.length === 0;
+
+  if(isGameOver) {
+    return <div className='message'>Congratulations </div>
+  }
+
 
   return (
     <>
       {options.map((option) => (
         <button
         key={option.value}
-          className={option.state === 'SELECTED' ? 'selected' : ''}
+          className={option.state === 'SELECTED' ? 'selected' : option.state === 'WRONG' ? 'wrong' : '' }
           onClick={() => {
+            //set to default
+            setOptions(options.map(opt => (
+                {
+                    ...opt,
+                    state: "DEFAULT",
+                }) 
+             
+             ));
+
             if(!selected){
               setSelected(option)
-                 //setting color to blue
+                 //if selected correct pair
             setOptions(options.map(opt => {
               return opt === option ? 
                 {
                   ...opt,
               state: "SELECTED",
-                } : opt;
+                } : {...opt, state: "DEFAULT"};
               }
             )
             );
@@ -49,7 +64,24 @@ const CountryCapital = ({ data }: { data: Record<string, string> }) => {
                 setOptions(options.filter(opt => {
                   return !(opt.value === selected.value || opt.value === option.value)
                 }))
-              } setSelected(undefined)
+              } 
+              else {
+                //wrong pair
+                setOptions(options.map(opt => {
+                    return (
+                        opt.value === selected.value || opt.value === option.value
+                    )
+                    ? 
+                      {
+                        ...opt,
+                    state: "WRONG",
+                      } : {...opt, state: "DEFAULT"};
+                    }
+                  )
+                  );
+
+              }
+              setSelected(undefined)
             }
          
             }}>

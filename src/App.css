@@ -8,16 +8,4 @@
   height:100vh;
 }
 
-.leftPane,
-.rightPane {
-  flex: 1; /* Equal width for both panes */
-  margin: 0 10px; /* Adjust spacing between panes */
-}
-
-.leftPane {
-  background-color: lightblue;
-}
-.rightPane {
-  background-color: lightgreen;
-}
 
